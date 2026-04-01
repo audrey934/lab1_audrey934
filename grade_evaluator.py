@@ -104,7 +104,7 @@ def evaluate_grades(data):
         for a in invalid_scores:
             print(f"  - {a['assignment']}: {a['score']}")
         sys.exit(1)
-    print(" The scores are valid")
+    print("The scores are valid")
  
     # Part II: Weight Validation
     total_weight = sum(a['weight'] for a in data)
