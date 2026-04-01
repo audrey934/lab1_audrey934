@@ -5,7 +5,7 @@
 set -euo pipefail
 
 ARCHIVE_DIR="archive"
-CSV_FILE="grades_audrey.csv"
+CSV_FILE="grades.csv"
 LOG_FILE="organizer.log"
 
 # Ensure archive directory exists
