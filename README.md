@@ -1,4 +1,4 @@
-# Grade Evaluator & File Organizer
+# Grade Evaluator & Archiver
 
 This project processes student grade data from a CSV file to determine academic standing and uses a shell script to organize grade files.
 
@@ -8,7 +8,6 @@ The project includes two components:
 
 - **organize.sh** : A shell script that archives the current CSV file and prepares a fresh workspace.
 
----
 
 ## Requirements
 
@@ -20,47 +19,49 @@ The project includes two components:
 ## CSV Format
 
 The CSV file must follow this structure:
-
+```csv
 assignment,group,score,weight
 Quiz,Formative,85,20
 Group Exercise,Formative,40,20
 Functions and Debugging Lab,Formative,45,20
 Midterm Project - Simple Calculator,Summative,70,20
 Final Project - Text-Based Game,Summative,60,20
+```
 
 ## Grade Evaluator Features and Operations
 The Python script(grade_evaluator.py) has the following features:
 
-1. **File validation and data loading**: The program prompts user to  enter the name of csv filename. It confirms that the file exists and i   s not empty.
+1. **File validation and data loading**: The program prompts the user to enter the name of the CSV file. It confirms that the file exists and is not empty.
 
-2. **Data validation and error handling**: The program ensures that  data is complete and valid. i.e: all required columns, rows, and fields   are present, necessary type casting is done. In  case of a problem, an explanatory error message is displayed and the program terminates.
+2. **Data validation and error handling**: The program ensures that data is complete and valid. i.e, confirms that all required columns, rows, and fields are present, and necessary type casting is done. In case of a problem, an explanatory error message is displayed, and the program terminates.
 
 3. **Score and weight validation**:
    - Scores must be within the range of 0-100
    - The total weight of assignments must be 100
    - Total weight of formative assessments must be 60
    - Total weight of summative assessments must be 40
-   When any condition is not met, an explanation is displayed and the   program stops execution.
+   When any condition is not met, an explanation is displayed, and the program stops execution.
 
 4. **Grade Calculation**: 
-   - Calculates contribution of each assignment to weight
+   - Calculates the contribution of each assignment to the weight
    - Calculates student's grades into formatives(out of 60) and summatives(out of 40)
-   - Calculates percentage for each category(Summative and formative)   - Calculates overall grades and converts into a GPA out 5
+   - Calculates percentage for each category(Summative and formative)
+   - Calculates overall grades and converts them into a GPA out of 5
 
 5. **Status and Resubmission**:
    - The student **only** PASSES if (formative score ≥ 50% and summative score ≥ 50%)
    
-   - Program fins the formatives with scores below 50%. The ones with highest weight are presented as eligible for resubmission. If two assignments have the same highest weight, they are both shown and student can select one.
+   - Program finds the formatives with scores below 50%. The ones with the highest weight are presented as eligible for resubmission. If two assignments have the same highest weight, they are both shown, and the student can select one.
 
-   **NOTE**: If students failed due to summmative performnce but is still eligible for some formative resubmission, the program clarifies th   at resubmission may raise GPA, but the status remains FAILED. This may be relevant for students who may want tob switch schools and need    a slightly greater GPA.
+   **NOTE**: If students failed due to summative performance but are still eligible for some formative resubmission, the program clarifies that resubmission may raise GPA, but the status remains FAILED. This may be relevant for students who may want to switch schools and need a slightly higher GPA.
 
 ## File Organizer Features and Operations
 
-The file organizer.sh has the following operations
+The file organizer.sh has the following operations:
 
 - Bash script to archive your CSV grade file (grade.csv) with a timestamp.
 - Ensures an archive directory exists, creating it if necessary.
-- Moves the current CSV into archive and renames it with the current date and time.
+- Moves the current CSV into the archive and renames it with the current date and time (e.g, grades_20251105-170000.csv).
 - Creates a fresh, empty CSV for the next run.
 - Logs each archive operation in organizer.log.
 
